@@ -8,6 +8,8 @@
 
 - [ ] Disable IPv4
 
+- [ ] Configure GRUB
+
 - [ ] Install and configure Icinga client
 
 - [ ] Static configuration for WAN and LAN network interfaces
