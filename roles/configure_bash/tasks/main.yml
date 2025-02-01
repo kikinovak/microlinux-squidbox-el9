@@ -1,0 +1,19 @@
+---  # configure_bash/tasks/main.yml
+
+- name: Configure Bash shell for root
+  ansible.builtin.copy:
+    src: bashrc-root
+    dest: /root/.bashrc
+    owner: root
+    group: root
+    mode: 0644
+
+- name: Configure Bash shell for future users
+  ansible.builtin.copy:
+    src: bashrc-user
+    dest: /etc/skel/.bashrc
+    owner: root
+    group: root
+    mode: 0644
+
+...

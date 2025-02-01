@@ -26,5 +26,6 @@
     - configure_locale
     - enable_selinux
     - configure_sudo
+    - configure_bash
 
 ...
