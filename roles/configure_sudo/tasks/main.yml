@@ -1,0 +1,11 @@
+---  # configure_sudo/tasks/main.yml
+
+- name: Configure persistent password for sudo
+  ansible.builtin.copy:
+    src: persistent_password
+    dest: /etc/sudoers.d/
+    owner: root
+    group: root
+    mode: 0644
+
+...
