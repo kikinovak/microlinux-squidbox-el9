@@ -1,0 +1,136 @@
+---  # repos_official/tasks/main.yml
+
+- name: Enable Rocky Linux BaseOS repository with a priority of 1
+  ansible.builtin.yum_repository:
+    name: baseos
+    file: rocky
+    description: BaseOS
+    baseurl:
+      - http://mirror.in2p3.fr/pub/linux/rocky/$releasever/BaseOS/$basearch/os/
+      - http://dl.rockylinux.org/$contentdir/$releasever/BaseOS/$basearch/os/
+    gpgcheck: true
+    gpgkey: file:///etc/pki/rpm-gpg/RPM-GPG-KEY-Rocky-9
+    enabled: true
+    priority: 1
+
+- name: Disable Rocky Linux BaseOS Debug repository
+  ansible.builtin.yum_repository:
+    name: baseos-debug
+    file: rocky
+    state: absent
+
+- name: Disable Rocky Linux BaseOS Source repository
+  ansible.builtin.yum_repository:
+    name: baseos-source
+    file: rocky
+    state: absent
+
+- name: Enable Rocky Linux AppStream repository with a priority of 1
+  ansible.builtin.yum_repository:
+    name: appstream
+    file: rocky
+    description: AppStream
+    baseurl:
+      - http://mirror.in2p3.fr/pub/linux/rocky/$releasever/AppStream/$basearch/os/
+      - http://dl.rockylinux.org/$contentdir/$releasever/AppStream/$basearch/os/
+    gpgcheck: true
+    gpgkey: file:///etc/pki/rpm-gpg/RPM-GPG-KEY-Rocky-9
+    enabled: true
+    priority: 1
+
+- name: Disable Rocky Linux AppStream Debug repository
+  ansible.builtin.yum_repository:
+    name: appstream-debug
+    file: rocky
+    state: absent
+
+- name: Disable Rocky Linux AppStream Source repository
+  ansible.builtin.yum_repository:
+    name: appstream-source
+    file: rocky
+    state: absent
+
+- name: Enable Rocky Linux CRB repository with a priority of 1
+  ansible.builtin.yum_repository:
+    name: crb
+    file: rocky
+    description: CRB
+    baseurl:
+      - http://mirror.in2p3.fr/pub/linux/rocky/$releasever/CRB/$basearch/os/
+      - http://dl.rockylinux.org/$contentdir/$releasever/CRB/$basearch/os/
+    gpgcheck: true
+    gpgkey: file:///etc/pki/rpm-gpg/RPM-GPG-KEY-Rocky-9
+    enabled: true
+    priority: 1
+
+- name: Disable Rocky Linux CRB Debug repository
+  ansible.builtin.yum_repository:
+    name: crb-debug
+    file: rocky
+    state: absent
+
+- name: Disable Rocky Linux CRB Source repository
+  ansible.builtin.yum_repository:
+    name: crb-source
+    file: rocky
+    state: absent
+
+- name: Enable Rocky Linux Extras repository with a priority of 1
+  ansible.builtin.yum_repository:
+    name: extras
+    file: rocky-extras
+    description: Extras
+    baseurl:
+      - http://mirror.in2p3.fr/pub/linux/rocky/$releasever/extras/$basearch/os/
+      - http://dl.rockylinux.org/$contentdir/$releasever/extras/$basearch/os/
+    gpgcheck: true
+    gpgkey: file:///etc/pki/rpm-gpg/RPM-GPG-KEY-Rocky-9
+    enabled: true
+    priority: 1
+
+- name: Disable Rocky Linux Extras Debug repository
+  ansible.builtin.yum_repository:
+    name: extras-debug
+    file: rocky-extras
+    state: absent
+
+- name: Disable Rocky Linux Extras Source repository
+  ansible.builtin.yum_repository:
+    name: extras-source
+    file: rocky-extras
+    state: absent
+
+- name: Enable Rocky Linux Plus repository with a priority of 1
+  ansible.builtin.yum_repository:
+    name: plus
+    file: rocky-extras
+    description: Plus
+    baseurl:
+      - http://mirror.in2p3.fr/pub/linux/rocky/$releasever/plus/$basearch/os/
+      - http://dl.rockylinux.org/$contentdir/$releasever/plus/$basearch/os/
+    gpgcheck: true
+    gpgkey: file:///etc/pki/rpm-gpg/RPM-GPG-KEY-Rocky-9
+    enabled: true
+    priority: 1
+
+- name: Disable Rocky Linux Plus Debug repository
+  ansible.builtin.yum_repository:
+    name: plus-debug
+    file: rocky-extras
+    state: absent
+
+- name: Disable Rocky Linux Plus Source repository
+  ansible.builtin.yum_repository:
+    name: plus-source
+    file: rocky-extras
+    state: absent
+
+- name: Disable unneeded Rocky Linux repositories
+  ansible.builtin.file:
+    path: "{{item}}"
+    state: absent
+  loop:
+    - /etc/yum.repos.d/rocky-addons.repo
+    - /etc/yum.repos.d/rocky-devel.repo
+
+...

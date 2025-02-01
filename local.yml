@@ -28,5 +28,6 @@
     - configure_sudo
     - configure_bash
     - configure_vim
+    - repos_official
 
 ...
