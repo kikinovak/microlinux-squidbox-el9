@@ -1,0 +1,11 @@
+---  # enable_selinux/tasks/main.yml
+
+- name: Enable SELinux in enforcing mode
+  ansible.posix.selinux:
+    policy: targeted
+    state: enforcing
+  notify: Relabel filesystem
+
+- meta: flush_handlers
+
+...

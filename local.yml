@@ -24,5 +24,6 @@
 
   roles:
     - configure_locale
+    - enable_selinux
 
 ...

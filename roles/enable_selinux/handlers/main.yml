@@ -1,0 +1,8 @@
+---  # enable_selinux/handlers/main.yml
+
+- name: Relabel filesystem
+  ansible.builtin.file:
+    path: /.autorelabel
+    state: touch
+
+...
