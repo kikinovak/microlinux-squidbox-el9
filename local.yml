@@ -12,7 +12,7 @@
         - debug:
             msg: "Please run this program as root."
         - meta: end_play
-      when: eff_uid_number|int != 0
+      when: eff_uid|int != 0
 
     - name: Make sure we're running Rocky Linux 9.x
       ansible.builtin.assert:
