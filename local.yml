@@ -1,7 +1,6 @@
 ---  # local.yml
 
-- hosts: all
-  connection: local
+- hosts: localhost
 
   pre_tasks:
 
