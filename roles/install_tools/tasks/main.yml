@@ -1,0 +1,18 @@
+---  # install_tools/tasks/main.yml
+
+- name: Install Core package group
+  ansible.builtin.dnf:
+    name: "@Core"
+    state: present
+
+- name: Install Base package group
+  ansible.builtin.dnf:
+    name: "@Base"
+    state: present
+
+- name: Install additional command-line tools
+  ansible.builtin.dnf:
+    name: "{{tools}}"
+    state: present
+
+...

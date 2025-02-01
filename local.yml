@@ -31,5 +31,6 @@
     - repos_official
     - repos_epel
     - repo_lynis
+    - install_tools
 
 ...

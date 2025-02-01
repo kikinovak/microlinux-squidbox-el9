@@ -1,0 +1,33 @@
+---  # install_tools/vars/main.yml
+
+tools:
+  - acpid
+  - cowsay
+  - elinks
+  - exfatprogs
+  - fdupes
+  - figlet
+  - git
+  - glances
+  - iperf3
+  - lftp
+  - lynx
+  - lynis
+  - mtools
+  - ncftp
+  - nmap
+  - ntfs-3g
+  - ntfsprogs
+  - ntpstat
+  - postfix
+  - recode
+  - rtorrent
+  - screen
+  - s-nail
+  - speedtest-cli
+  - tmux
+  - traceroute
+  - unrar-free
+  - whois
+
+...
