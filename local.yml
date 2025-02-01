@@ -27,5 +27,6 @@
     - enable_selinux
     - configure_sudo
     - configure_bash
+    - configure_vim
 
 ...

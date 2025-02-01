@@ -1,0 +1,24 @@
+---  # configure_vim/tasks/main.yml
+
+- name: Make sure Vim is installed
+  ansible.builtin.dnf:
+    name: vim-enhanced
+    state: present
+
+- name: Configure Vim editor for root
+  ansible.builtin.copy:
+    src: vimrc
+    dest: /root/.vimrc
+    owner: root
+    group: root
+    mode: 0644
+
+- name: Configure Vim editor for future users
+  ansible.builtin.copy:
+    src: vimrc
+    dest: /etc/skel/.vimrc
+    owner: root
+    group: root
+    mode: 0644
+
+...
