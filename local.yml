@@ -4,6 +4,13 @@
 
   pre_tasks:
 
+    - name: Check out Effective User ID
+      set_fact:
+        eff_uid: "{{lookup('pipe', 'id -u')}}"
+
+    - debug:
+        var: eff_uid
+
     - name: Make sure we're running Rocky Linux 9.x
       ansible.builtin.assert:
         that:
