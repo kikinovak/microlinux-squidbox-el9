@@ -8,8 +8,11 @@
       set_fact:
         eff_uid: "{{lookup('pipe', 'id -u')}}"
 
-    - debug:
-        var: eff_uid
+    - block:
+        - debug:
+            msg: "Please run this program as root."
+        - meta: end_play
+      when: eff_uid_number|int != 0
 
     - name: Make sure we're running Rocky Linux 9.x
       ansible.builtin.assert:
