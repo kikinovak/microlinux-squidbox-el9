@@ -1,0 +1,69 @@
+---  # repos_epel/tasks/main.yml
+
+- name: Install EPEL release package
+  ansible.builtin.dnf:
+    name: epel-release
+    state: present
+
+- name: Enable EPEL repository with a priority of 10
+  ansible.builtin.yum_repository:
+    name: epel
+    file: epel
+    description: EPEL
+    baseurl:
+      - http://mirror.in2p3.fr/pub/linux/epel/$releasever/Everything/$basearch
+      - http://fr2.rpmfind.net/linux/epel/$releasever/Everything/$basearch
+      - http://mir01.syntis.net/epel/$releasever/Everything/$basearch
+    gpgcheck: true
+    gpgkey: file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-$releasever
+    enabled: true
+    priority: 10
+
+- name: Disable EPEL Debug repository
+  ansible.builtin.yum_repository:
+    name: epel-debuginfo
+    file: epel
+    state: absent
+
+- name: Disable EPEL Source repository
+  ansible.builtin.yum_repository:
+    name: epel-source
+    file: epel
+    state: absent
+
+- name: Enable OpenH264 repository with a priority of 10
+  ansible.builtin.yum_repository:
+    name: openh264
+    file: epel-cisco-openh264
+    description: OpenH264
+    baseurl:
+      - http://codecs.fedoraproject.org/openh264/34/$basearch/os
+    gpgcheck: true
+    gpgkey: file:///etc/pki/rpm-gpg/RPM-GPG-KEY-EPEL-$releasever
+    enabled: true
+    priority: 10
+
+- name: Rename EPEL Cisco OpenH264 repository
+  ansible.builtin.yum_repository:
+    name: epel-cisco-openh264
+    file: epel-cisco-openh264
+    state: absent
+
+- name: Disable EPEL Cisco OpenH264 Debug repository
+  ansible.builtin.yum_repository:
+    name: epel-cisco-openh264-debuginfo
+    file: epel-cisco-openh264
+    state: absent
+
+- name: Disable EPEL Cisco OpenH264 Source repository
+  ansible.builtin.yum_repository:
+    name: epel-cisco-openh264-source
+    file: epel-cisco-openh264
+    state: absent
+
+- name: Disable unneeded EPEL repositories
+  ansible.builtin.file:
+    path: /etc/yum.repos.d/epel-testing.repo
+    state: absent
+
+...

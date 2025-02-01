@@ -29,5 +29,6 @@
     - configure_bash
     - configure_vim
     - repos_official
+    - repos_epel
 
 ...
