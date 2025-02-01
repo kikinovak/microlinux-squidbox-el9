@@ -7,6 +7,7 @@
     - name: Check out Effective User ID
       set_fact:
         eff_uid: "{{lookup('pipe', 'id -u')}}"
+        locale: en_US.UTF-8
 
     - block:
         - debug:
