@@ -1,0 +1,20 @@
+---  # configure_locale/tasks/main.yml
+
+- name: Install basic language packs
+  ansible.builtin.dnf:
+    name:
+      - glibc-langpack-de
+      - glibc-langpack-en
+      - glibc-langpack-fr
+
+- name: Configure system locale
+  ansible.builtin.command:
+    cmd: localectl set-locale {{locale}}
+  changed_when: false
+
+- name: Configure console keyboard layout
+  ansible.builtin.command:
+    cmd: localectl set-keymap --no-convert {{console_keymap}}
+  changed_when: false
+
+...

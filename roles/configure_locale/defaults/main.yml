@@ -1,0 +1,6 @@
+---  # configure_locale/defaults/main.yml
+
+locale: fr_FR.UTF-8
+console_keymap: ch-fr
+
+...
