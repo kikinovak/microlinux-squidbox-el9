@@ -30,5 +30,6 @@
     - configure_vim
     - repos_official
     - repos_epel
+    - repo_lynis
 
 ...

@@ -1,0 +1,14 @@
+---  # repo_lynis/tasks/main.yml
+
+- name: Enable Lynis repository with a priority of 5
+  ansible.builtin.yum_repository:
+    name: lynis
+    file: lynis
+    description: Lynis
+    baseurl: https://packages.cisofy.com/community/lynis/rpm/
+    gpgcheck: true
+    gpgkey: https://packages.cisofy.com/keys/cisofy-software-rpms-public.key
+    enabled: true
+    priority: 5
+
+...
