@@ -1,0 +1,21 @@
+---  # setup_root/tasks/main.yml
+
+- name: Check if we have a root password
+  ansible.builtin.assert:
+    that:
+      - root_passwd != None
+    fail_msg: Please set a password for root using root_passwd
+
+- name: Set password and generate SSH key pair for root
+  ansible.builtin.user:
+    name: root
+    password: >-
+      {{root_passwd|
+      password_hash('sha512', 65534|
+      random(seed=inventory_hostname)|
+      string)}}
+    generate_ssh_key: true
+    ssh_key_type: ed25519
+    ssh_key_file: .ssh/id_ed25519
+
+...
