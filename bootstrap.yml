@@ -1,12 +1,6 @@
 ---  # bootstrap.yml
 
 - hosts: localhost
-  vars_prompt:
-
-    - name: username
-      prompt: Choose a password for user ema
-      default: ema123
-      private: true
 
   pre_tasks:
 
@@ -27,6 +21,13 @@
           - ansible_distribution == "Rocky"
           - ansible_distribution_major_version is version('9', '=')
         fail_msg: "Please run this playbook on Rocky Linux 9.x only."
+
+  vars_prompt:
+
+    - name: username
+      prompt: Choose a password for user ema
+      default: ema123
+      private: true
 
     - debug:
         var: username
