@@ -30,10 +30,20 @@
 
     - name: Configure Ansible Vault pass
       ansible.builtin.copy:
-        content: "{{vault_passwd}}\n"
         dest: /etc/ansible/vault_pass
         owner: root
         group: root
         mode: 0400
+        content: "{{vault_passwd}}\n"
 
+    - name: Configure Ansible
+      ansible.builtin.copy:
+        dest: /root/.ansible.cfg
+        owner: root
+        group: root
+        mode: 0644
+        content: |
+          [defaults]
+          vault_password_file = /etc/ansible/vault_pass
+        
 ...
