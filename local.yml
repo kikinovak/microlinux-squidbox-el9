@@ -38,5 +38,6 @@
     - repos_epel
     - repo_lynis
     - install_tools
+    - disable_ipv6
 
 ...
