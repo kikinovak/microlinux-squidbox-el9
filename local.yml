@@ -26,9 +26,6 @@
       ansible.builtin.include_vars:
         file: vars/secret.yml
 
-    - debug:
-        var: root_passwd
-
   roles:
     - configure_locale
     - enable_selinux
