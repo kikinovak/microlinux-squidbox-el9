@@ -2,6 +2,12 @@
 
 - hosts: localhost
 
+  vars_prompt:
+
+    - name: vault_passwd
+      prompt: Enter Ansible Vault password
+      private: true
+
   pre_tasks:
 
     - name: Check out Effective User ID
@@ -22,14 +28,7 @@
           - ansible_distribution_major_version is version('9', '=')
         fail_msg: "Please run this playbook on Rocky Linux 9.x only."
 
-  vars_prompt:
-
-    - name: username
-      prompt: Choose a password for user ema
-      default: ema123
-      private: true
-
     - debug:
-        var: username
+        var: vault_passwd
 
 ...
