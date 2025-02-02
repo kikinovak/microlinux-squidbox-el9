@@ -45,5 +45,6 @@
         content: |
           [defaults]
           vault_password_file = /etc/ansible/vault_pass
+          nocows = true
         
 ...
