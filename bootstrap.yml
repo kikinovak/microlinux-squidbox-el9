@@ -8,7 +8,7 @@
       prompt: Enter Ansible Vault password
       private: true
 
-  pre_tasks:
+  tasks:
 
     - name: Check out Effective User ID
       set_fact:
@@ -47,4 +47,9 @@
           vault_password_file = /etc/ansible/vault_pass
           nocows = true
         
+    - name: Install python3-passlib needed for password encryption
+      ansible.builtin.dnf:
+        name: python3-passlib
+        state: present
+
 ...
