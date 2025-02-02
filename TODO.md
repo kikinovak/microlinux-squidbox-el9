@@ -6,7 +6,7 @@
 
 - [x] Create and configure first user.
 
-- [ ] Disable IPv4
+- [x] Disable IPv4
 
 - [ ] Configure GRUB
 
