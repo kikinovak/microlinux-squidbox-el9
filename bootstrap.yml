@@ -28,9 +28,6 @@
           - ansible_distribution_major_version is version('9', '=')
         fail_msg: "Please run this playbook on Rocky Linux 9.x only."
 
-    - debug:
-        var: vault_passwd
-
     - name: Configure Ansible Vault pass
       ansible.builtin.copy:
         content: "{{vault_passwd}}\n"
