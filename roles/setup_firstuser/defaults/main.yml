@@ -1,0 +1,14 @@
+---  # setup_firstuser/defaults/main.yml
+
+# Default variables for initial non-root user
+
+# Login name
+firstuser_login: microlinux
+# Full name
+firstuser_name: Microlinux
+# Password
+firstuser_passwd: # no default
+# Add user to wheel and systemd-journal groups?
+firstuser_admin: true
+
+...

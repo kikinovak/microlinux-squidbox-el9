@@ -1,0 +1,30 @@
+---  # setup_firstuser/tasks/main.yml
+
+- name: "Check if we have a password for initial user: {{firstuser_login}}"
+  ansible.builtin.assert:
+    that:
+      - firstuser_passwd != None
+    fail_msg: "Please set a password for user {{firstuser_login}} \
+               using firstuser_passwd"
+
+- name: "Setup account and generate SSH key pair for initial user: \
+         {{firstuser_login}}"
+  ansible.builtin.user:
+    name: "{{firstuser_login}}"
+    comment: "{{firstuser_name}}"
+    password: >-
+      {{firstuser_passwd|
+      password_hash('sha512', 65534|
+      random(seed=inventory_hostname)|
+      string)}}
+    generate_ssh_key: true
+    ssh_key_type: ed25519
+    ssh_key_file: .ssh/id_ed25519
+
+- name: "Define administrator rights for initial user: {{firstuser_login}}"
+  ansible.builtin.user:
+    name: "{{firstuser_login}}"
+    groups: wheel,systemd-journal
+  when: firstuser_admin
+
+...

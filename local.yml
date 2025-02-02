@@ -33,6 +33,7 @@
     - configure_sudo
     - configure_bash
     - configure_vim
+    - setup_firstuser
     - repos_official
     - repos_epel
     - repo_lynis
