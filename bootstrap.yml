@@ -23,8 +23,9 @@
         fail_msg: "Please run this playbook on Rocky Linux 9.x only."
 
   vars_prompt:
-    - name: vault_passwd
-      prompt: Enter Ansible Vault password
+    - name: firstuser_passwd
+      prompt: Choose a password for user ema
+      default: ema123
       private: true
 
     - debug:
