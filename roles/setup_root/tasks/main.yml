@@ -6,6 +6,11 @@
       - root_passwd != None
     fail_msg: Please set a password for root using root_passwd
 
+- name: Install python3-passlib needed for password encryption
+  ansible.builtin.dnf:
+    name: python3-passlib
+    state: present
+
 - name: Set password and generate SSH key pair for root
   ansible.builtin.user:
     name: root
