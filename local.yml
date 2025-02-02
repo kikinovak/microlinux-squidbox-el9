@@ -26,6 +26,11 @@
       ansible.builtin.include_vars:
         file: vars/secret.yml
 
+    - name: Install python3-passlib needed for password encryption
+      ansible.builtin.dnf:
+        name: python3-passlib
+        state: present
+
   roles:
     - configure_locale
     - enable_selinux
