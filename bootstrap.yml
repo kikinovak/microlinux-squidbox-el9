@@ -1,0 +1,25 @@
+---  # bootstrap.yml
+
+- hosts: localhost
+
+  tasks:
+
+    - name: Check out Effective User ID
+      set_fact:
+        eff_uid: "{{lookup('pipe', 'id -u')}}"
+        locale: en_US.UTF-8
+
+    - block:
+        - debug:
+            msg: "Please run this program as root."
+        - meta: end_play
+      when: eff_uid|int != 0
+
+    - name: Make sure we're running Rocky Linux 9.x
+      ansible.builtin.assert:
+        that:
+          - ansible_distribution == "Rocky"
+          - ansible_distribution_major_version is version('9', '=')
+        fail_msg: "Please run this playbook on Rocky Linux 9.x only."
+
+...
