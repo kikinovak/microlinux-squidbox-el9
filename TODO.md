@@ -2,7 +2,7 @@
 
 - [ ] Get rid of `Could not match supplied host pattern` warnings
 
-- [ ] Manage secrets with `ansible-vault`
+- [x] Manage secrets with `ansible-vault`
 
 - [ ] Create and configure first user.
 
