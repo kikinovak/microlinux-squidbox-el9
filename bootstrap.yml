@@ -31,4 +31,9 @@
     - debug:
         var: vault_passwd
 
+    - name: Configure Ansible Vault pass
+      ansible.builtin.copy:
+        content: "{{vault_passwd}}"
+        dest: /etc/ansible/vault_pass
+
 ...
