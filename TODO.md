@@ -4,7 +4,7 @@
 
 - [x] Manage secrets with `ansible-vault`
 
-- [ ] Create and configure first user.
+- [x] Create and configure first user.
 
 - [ ] Disable IPv4
 
