@@ -2,7 +2,7 @@
 
 - hosts: localhost
 
-  tasks:
+  pre_tasks:
 
     - name: Check out Effective User ID
       set_fact:
@@ -21,5 +21,14 @@
           - ansible_distribution == "Rocky"
           - ansible_distribution_major_version is version('9', '=')
         fail_msg: "Please run this playbook on Rocky Linux 9.x only."
+
+  vars_prompt:
+
+    - name: vault_passwd
+      prompt: Enter Ansible Vault password
+      private: true
+
+    - debug:
+        var: vault_passwd
 
 ...
